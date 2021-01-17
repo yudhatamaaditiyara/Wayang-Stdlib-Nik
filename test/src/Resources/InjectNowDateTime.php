@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright 2021 Yudha Tama Aditiyara
  * SPDX-License-Identifier: Apache-2.0
@@ -15,8 +15,8 @@ class InjectNowDateTime extends DateTimeImmutable
 
   public function __construct(int $nowDay, int $nowMonth, int $nowYear){
     parent::__construct();
-    $this->nowDay = sprintf('%02d', $nowDay);
-    $this->nowMonth = sprintf('%02d', $nowMonth);
+    $this->nowDay = (string)$nowDay;
+    $this->nowMonth = (string)$nowMonth;
     $this->nowYear = sprintf('%04d', $nowYear);
   }
 
@@ -25,9 +25,9 @@ class InjectNowDateTime extends DateTimeImmutable
       case 'Y':
         return $this->nowYear;
       case 'n':
-        return (int)$this->nowMonth;
+        return $this->nowMonth;
       case 'j':
-        return (int)$this->nowDay;
+        return $this->nowDay;
     }
     return parent::format($format);
   }
