@@ -60,7 +60,7 @@ class Birthday implements BirthdayInterface
    * @param string|BirthdayInterface $raw
    */
   public function __construct($raw){
-    static::parseRaw((string)$raw);
+    $this->parseRaw((string)$raw);
   }
 
   /**
